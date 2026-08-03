@@ -51,8 +51,8 @@ npm run dev
 `.ssr/` (outside `dist/` so it is never served), and `scripts/prerender.js`, which writes a real
 static HTML file per route plus `sitemap.xml` and `robots.txt` into `dist/`.
 
-`npm run optimise:poster` regenerates `public/s15-poster.jpg` from the full-resolution still in
-`assets/`. Only needed if the source still changes.
+`npm run optimise:poster` and `npm run encode:video` regenerate the hero assets from the originals
+in `assets/`. Neither runs during a normal build — only re-run them if a source asset changes.
 
 Note that `npm run dev` serves the front end only — `/api/contact` does not exist locally, so the
 form will show its error state. To exercise the form end to end, run `vercel dev` (with the
@@ -137,8 +137,24 @@ On Netlify the function would need moving to `netlify/functions/` and the header
 
 ## Assets
 
-`public/s15-hero.mp4` is the hero background video (10s, 2560×1440, silent, loops back to its first
-frame). `public/s15-poster.png` is its first frame, used as the `<video poster>`.
+The originals live in `assets/` and are never served. `public/` holds only the encoded derivatives.
+
+| Served file | What it is |
+| --- | --- |
+| `s15-hero.mp4` | Desktop, 1920×1080, silent, loops to its first frame |
+| `s15-hero-mobile.mp4` | Phones, 720×1558 portrait, the front-of-car crop baked in |
+| `s15-poster.jpg` | Desktop first frame |
+| `s15-poster-mobile.jpg` | Cropped to match the portrait video |
+
+The Higgsfield render was 2560×1440 at ~1.65 Mbps, which is around five times under the bitrate that
+resolution needs: expensive to decode and visibly full of compression artifacts. It also carried an
+AAC track the muted hero never plays. Both encodes drop the audio, and the mobile file bakes in the
+crop the CSS used to reach with `scale(1.4)`, so phones no longer decode a 16:9 frame and discard
+most of it.
+
+If you replace the source video, keep it at `assets/s15-hero-source.mp4` and re-run
+`npm run encode:video`. The crop rectangle in `scripts/encode-video.js` is tuned to this specific
+framing and will need adjusting for a different shot.
 
 ## Notable implementation details
 

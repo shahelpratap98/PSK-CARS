@@ -13,7 +13,24 @@ const source = join(root, 'assets', 's15-poster-source.png')
 // JPEG only: <video poster> takes a single URL with no format negotiation, and
 // link-preview scrapers are unreliable with WebP, so one broadly supported file
 // is worth more here than a smaller one.
-const outputs = [{ file: 's15-poster.jpg', run: (img) => img.jpeg({ quality: 74, mozjpeg: true }) }]
+//
+// The mobile poster is cropped to match s15-hero-mobile.mp4, otherwise the wide
+// shot would flash for a moment before the cropped video replaced it. The
+// rectangle is the video crop scaled by 2752/2560, since the still was rendered
+// slightly wider than the video.
+const MOBILE_CROP = { left: 998, top: 441, width: 512, height: 1095 }
+
+const outputs = [
+  {
+    file: 's15-poster.jpg',
+    run: (img) => img.resize({ width: 1600, withoutEnlargement: true }).jpeg({ quality: 74, mozjpeg: true }),
+  },
+  {
+    file: 's15-poster-mobile.jpg',
+    run: (img) =>
+      img.extract(MOBILE_CROP).resize({ width: 720 }).jpeg({ quality: 76, mozjpeg: true }),
+  },
+]
 
 const kb = async (path) => Math.round((await stat(path)).size / 1024)
 
@@ -21,6 +38,6 @@ console.log(`source  s15-poster-source.png  ${await kb(source)} KB`)
 
 for (const { file, run } of outputs) {
   const target = join(root, 'public', file)
-  await run(sharp(source).resize({ width: 1600, withoutEnlargement: true })).toFile(target)
+  await run(sharp(source)).toFile(target)
   console.log(`written ${file}  ${await kb(target)} KB`)
 }

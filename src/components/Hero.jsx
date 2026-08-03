@@ -5,26 +5,36 @@ import { BUSINESS, whatsappLink } from '../siteConfig'
 export default function Hero() {
   return (
     <section className="relative isolate flex min-h-svh flex-col justify-end overflow-hidden">
-      {/* A phone viewport is far taller than the 16:9 source, so plain cover
-          leaves the car small and low in frame. On mobile we crop to the front
-          of the car — headlight, fender flare and wheel — by shifting the crop
-          and scaling in. Desktop keeps the full wide shot with the car to the
-          right of the copy. */}
+      {/* Two encodes rather than one. Phones get a portrait file with the
+          front-of-car framing already cropped in, so the browser is not
+          decoding a 16:9 frame and throwing most of it away to reach the same
+          shot. Desktop gets the wide 1080p cut with the car right of the copy.
+          The matching poster prevents a flash of the wrong framing. */}
+      {/* The poster lives here rather than on the video, because a poster
+          attribute takes one URL and cannot follow a media query. */}
+      <div className="hero-poster pointer-events-none absolute inset-0 -z-30" aria-hidden="true" />
+
       <video
-        className="absolute inset-0 -z-20 h-full w-full origin-[70%_100%] scale-[1.4] object-cover [object-position:42%_center] md:origin-center md:scale-100 md:[object-position:72%_center]"
-        src="/s15-hero.mp4"
-        poster="/s15-poster.jpg"
+        className="absolute inset-0 -z-20 h-full w-full object-cover object-center md:[object-position:72%_center]"
         autoPlay
         loop
         muted
         playsInline
+        preload="auto"
+        disablePictureInPicture
         aria-hidden="true"
-      />
+      >
+        <source src="/s15-hero-mobile.mp4" media="(max-width: 767px)" type="video/mp4" />
+        <source src="/s15-hero.mp4" type="video/mp4" />
+      </video>
 
       {/* Keeps the copy legible without flattening the video: a soft wash from
           the text side on desktop, from the bottom on mobile. */}
       <div className="hero-scrim pointer-events-none absolute inset-0 -z-10" />
-      <div className="bottom-blur-mask pointer-events-none absolute inset-0 -z-10 backdrop-blur-xl" />
+      {/* backdrop-filter over a playing video is one of the most expensive
+          things a mobile GPU can be asked to do, and under the heavy bottom
+          scrim it is barely visible there anyway, so it starts at md. */}
+      <div className="bottom-blur-mask pointer-events-none absolute inset-0 -z-10 md:backdrop-blur-xl" />
 
       <div className="mx-auto w-full max-w-7xl px-4 pt-32 pb-14 sm:px-6 md:px-12 md:pb-20">
         <div className="max-w-xl lg:max-w-2xl">

@@ -8,6 +8,7 @@
     "build": "vite build && vite build --ssr src/entry-server.jsx --outDir .ssr && node scripts/prerender.js",
     "build:client": "vite build",
     "optimise:poster": "node scripts/optimise-poster.js",
+    "encode:video": "node scripts/encode-video.js",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -18,6 +19,8 @@
     "resend": "^6.18.1"
   },
   "devDependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
+    "@ffprobe-installer/ffprobe": "^2.1.2",
     "@tailwindcss/vite": "^4.0.0",
     "@vitejs/plugin-react": "^4.3.4",
     "sharp": "^0.35.3",

@@ -6,7 +6,7 @@ import { BUSINESS, BUSINESS_EMAIL, SERVICES, WHATSAPP_NUMBER } from './siteConfi
 // day the real domain is connected — otherwise canonicals keep pointing here
 // and the custom domain will not accumulate its own search authority.
 // ---------------------------------------------------------------------------
-export const SITE_URL = 'https://pskcars.vercel.app'
+export const SITE_URL = 'https://psk-cars.vercel.app'
 
 // TODO: add the workshop's street address. Google's local pack leans heavily on
 // a consistent name/address/phone across the site, the Google Business Profile

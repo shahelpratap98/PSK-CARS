@@ -79,6 +79,22 @@ body {
   mask-image: linear-gradient(to top, black 0%, transparent 45%);
 }
 
+/* Stands in for the video's poster attribute so the framing can follow a media
+   query. Mobile gets the cropped still that matches the portrait encode. */
+.hero-poster {
+  background-image: url('/s15-poster-mobile.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media (min-width: 768px) {
+  .hero-poster {
+    background-image: url('/s15-poster.jpg');
+    background-position: 72% center;
+  }
+}
+
 /* Mobile stacks the copy under the car, so the wash comes from the bottom.
    From md up the copy sits in the left column, so it comes from the left. */
 .hero-scrim {
