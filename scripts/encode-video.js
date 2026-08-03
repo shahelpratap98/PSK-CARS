@@ -25,9 +25,14 @@ const COMMON = ['-an', '-movflags', '+faststart', '-pix_fmt', 'yuv420p', '-prese
 const jobs = [
   {
     name: 's15-hero.mp4',
-    label: 'desktop 1080p',
-    filters: 'scale=1920:1080:flags=lanczos',
-    crf: '20',
+    // Kept at the source's native 2560x1440. An earlier pass downscaled this to
+    // 1080p, which looked soft on anything larger than a 1080p display because
+    // the browser was upscaling it back. The original was blurry for a
+    // different reason: bitrate starvation at 1.65 Mbps. CRF 18 fixes that
+    // without giving up resolution.
+    label: 'desktop native 1440p',
+    filters: 'scale=2560:1440:flags=lanczos',
+    crf: '18',
   },
   {
     name: 's15-hero-mobile.mp4',

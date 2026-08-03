@@ -26,7 +26,7 @@ export const PHONE = ''
  * optimise:poster` changes an asset, and mirror it in the `.hero-poster` rule
  * in index.css, which cannot import this value.
  */
-export const MEDIA_VERSION = '2'
+export const MEDIA_VERSION = '3'
 
 export const OG_IMAGE = `${SITE_URL}/s15-poster.jpg?v=${MEDIA_VERSION}`
 

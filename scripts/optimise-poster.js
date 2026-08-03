@@ -23,7 +23,9 @@ const MOBILE_CROP = { left: 998, top: 441, width: 512, height: 1095 }
 const outputs = [
   {
     file: 's15-poster.jpg',
-    run: (img) => img.resize({ width: 1600, withoutEnlargement: true }).jpeg({ quality: 74, mozjpeg: true }),
+    // Matches the 2560-wide desktop video. At 1600 it was visibly upscaled on
+    // larger displays during the moment before the video starts playing.
+    run: (img) => img.resize({ width: 2560, withoutEnlargement: true }).jpeg({ quality: 76, mozjpeg: true }),
   },
   {
     file: 's15-poster-mobile.jpg',
