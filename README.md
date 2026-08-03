@@ -18,16 +18,20 @@ The WhatsApp number is international format with no `+`, spaces or leading zero 
 And in [`src/seo.js`](src/seo.js):
 
 ```js
-export const SITE_URL = 'https://www.pskcars.co.nz'  // must be the real domain
-export const STREET_ADDRESS = ''                     // for local search
+export const SITE_URL = 'https://pskcars.vercel.app'  // interim Vercel URL
+export const STREET_ADDRESS = ''                      // for local search
 export const POSTAL_CODE = ''
 export const PHONE = ''
 ```
 
-`SITE_URL` builds every canonical URL, the sitemap and the Open Graph tags, so a wrong value points
-search engines and link previews at the wrong place. The address and phone fields are omitted from
-the structured data while empty rather than guessed at, but local search rankings depend on a real
-address that matches the Google Business Profile exactly.
+`SITE_URL` is currently the Vercel deployment URL. It builds every canonical URL, the sitemap and
+the Open Graph tags, so **update it the day the custom domain is connected** — otherwise every page
+keeps declaring the `.vercel.app` address as canonical and the real domain never accumulates its own
+search authority.
+
+The address and phone fields are omitted from the structured data while empty rather than guessed
+at, but local search rankings depend on a real address that matches the Google Business Profile
+exactly.
 
 ## Stack
 

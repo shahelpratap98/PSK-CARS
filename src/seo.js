@@ -1,11 +1,12 @@
 import { BUSINESS, BUSINESS_EMAIL, SERVICES, WHATSAPP_NUMBER } from './siteConfig'
 
 // ---------------------------------------------------------------------------
-// TODO: set this to the live domain before launch. It builds every canonical
-// URL, the sitemap and the Open Graph tags, so a wrong value here quietly
-// points search engines and link previews at the wrong place.
+// The Vercel deployment URL, used until the custom domain is live. This builds
+// every canonical URL, the sitemap and the Open Graph tags, so update it the
+// day the real domain is connected — otherwise canonicals keep pointing here
+// and the custom domain will not accumulate its own search authority.
 // ---------------------------------------------------------------------------
-export const SITE_URL = 'https://www.pskcars.co.nz'
+export const SITE_URL = 'https://pskcars.vercel.app'
 
 // TODO: add the workshop's street address. Google's local pack leans heavily on
 // a consistent name/address/phone across the site, the Google Business Profile
