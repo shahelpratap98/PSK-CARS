@@ -74,11 +74,6 @@ body {
   transform: translateY(40px);
 }
 
-.bottom-blur-mask {
-  -webkit-mask-image: linear-gradient(to top, black 0%, transparent 45%);
-  mask-image: linear-gradient(to top, black 0%, transparent 45%);
-}
-
 /* Stands in for the video's poster attribute so the framing can follow a media
    query. Mobile gets the cropped still that matches the portrait encode.
    The ?v= must match MEDIA_VERSION in src/seo.js — these files are served
@@ -110,10 +105,18 @@ body {
 }
 
 @media (min-width: 768px) {
+  /* The bottom stop is heavier than it used to be: it replaces the
+     full-viewport backdrop-filter that used to sit over the video. */
   .hero-scrim {
     background:
       linear-gradient(to right, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.6) 38%, rgba(0, 0, 0, 0) 68%),
-      linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 45%);
+      linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.92) 0%,
+        rgba(0, 0, 0, 0.6) 22%,
+        rgba(0, 0, 0, 0.2) 40%,
+        rgba(0, 0, 0, 0) 62%
+      );
   }
 }
 

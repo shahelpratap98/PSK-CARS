@@ -11,7 +11,16 @@ export default function Navbar() {
   useEffect(() => setMenuOpen(false), [pathname])
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24)
+    // Only touch state when the threshold is actually crossed, so scrolling
+    // does not queue a React update on every frame.
+    let current = false
+    const onScroll = () => {
+      const next = window.scrollY > 24
+      if (next !== current) {
+        current = next
+        setScrolled(next)
+      }
+    }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
@@ -20,7 +29,10 @@ export default function Navbar() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ${
-        scrolled || menuOpen ? 'bg-black/70 backdrop-blur-xl' : 'bg-transparent'
+        // Solid rather than translucent-and-blurred: a backdrop-filter on a
+        // fixed header re-blurs the full width against whatever is scrolling
+        // underneath, on every single frame of the scroll.
+        scrolled || menuOpen ? 'bg-black/95' : 'bg-transparent'
       }`}
     >
       {/* Over the hero the navbar is transparent, and the video's light bar can

@@ -32,10 +32,11 @@ export default function Hero() {
       {/* Keeps the copy legible without flattening the video: a soft wash from
           the text side on desktop, from the bottom on mobile. */}
       <div className="hero-scrim pointer-events-none absolute inset-0 -z-10" />
-      {/* backdrop-filter over a playing video is one of the most expensive
-          things a mobile GPU can be asked to do, and under the heavy bottom
-          scrim it is barely visible there anyway, so it starts at md. */}
-      <div className="bottom-blur-mask pointer-events-none absolute inset-0 -z-10 md:backdrop-blur-xl" />
+      {/* There used to be a full-viewport backdrop-filter here. A backdrop blur
+          over a playing video has to be recomputed for every frame of that
+          video, across the whole viewport, forever. It was the single most
+          expensive thing on the page and it sat under a nearly opaque scrim.
+          The scrim below now does the same job for free. */}
 
       <div className="mx-auto w-full max-w-7xl px-4 pt-32 pb-14 sm:px-6 md:px-12 md:pb-20">
         <div className="max-w-xl lg:max-w-2xl">
