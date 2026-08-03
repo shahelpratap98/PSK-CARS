@@ -39,6 +39,21 @@ const urls = ROUTES.map(
     `  <url>\n    <loc>${SITE_URL}${route.path === '/' ? '/' : route.path}</loc>\n    <lastmod>${today}</lastmod>\n    <priority>${route.priority}</priority>\n  </url>`,
 ).join('\n')
 
+// Vercel serves dist/404.html with a real 404 status for any unmatched path.
+// It is deliberately absent from ROUTES so it never reaches the sitemap.
+const notFound = render('/__not-found__')
+await writeFile(
+  join(dist, '404.html'),
+  template
+    .replace(
+      '<!--app-head-->',
+      '<title>Page not found | PSK Cars</title>\n    <meta name="robots" content="noindex" />',
+    )
+    .replace('<div id="root"></div>', `<div id="root">${notFound.html}</div>`),
+  'utf8',
+)
+console.log('prerendered 404.html')
+
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls}

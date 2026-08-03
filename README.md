@@ -113,11 +113,22 @@ available in this project.
 
 ## Deployment
 
-Built for **Vercel**: `vercel.json` rewrites everything except `/api/*` to `index.html` so deep links
-like `/services/compliance` resolve. Connect the GitHub repo, set the three environment variables,
-and deploy — the `api/` folder becomes the serverless function automatically.
+Built for **Vercel**. Connect the GitHub repo and it detects Vite automatically: build command
+`npm run build`, output directory `dist`. The `api/` folder becomes a serverless function with no
+extra configuration.
 
-On Netlify the function would need moving to `netlify/functions/` and the rewrite expressing in
+Set the three Resend environment variables in **Settings → Environment Variables** before the first
+deploy, or the contact form will return its "not configured" error.
+
+There is deliberately **no SPA rewrite**. Every route is prerendered to a real file, so
+`/services/compliance` resolves from `dist/services/compliance/index.html` directly. A catch-all
+rewrite to `index.html` would return the home page with HTTP 200 for mistyped URLs, which Google
+treats as a soft 404. Instead `dist/404.html` is prerendered and Vercel serves it with a genuine 404
+status. `cleanUrls` gives the extensionless paths.
+
+If you ever move off prerendering, that rewrite has to come back or deep links will 404.
+
+On Netlify the function would need moving to `netlify/functions/` and the headers expressing in
 `netlify.toml`.
 
 ## Assets

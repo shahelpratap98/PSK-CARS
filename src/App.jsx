@@ -7,6 +7,7 @@ import Services from './pages/Services'
 import ServiceDetail from './pages/ServiceDetail'
 import OurStory from './pages/OurStory'
 import Contact from './pages/Contact'
+import NotFound from './pages/NotFound'
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation()
@@ -32,7 +33,7 @@ export function AppShell() {
           <Route path="/services/:slug" element={<ServiceDetail />} />
           <Route path="/our-story" element={<OurStory />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<Home />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <Footer />
