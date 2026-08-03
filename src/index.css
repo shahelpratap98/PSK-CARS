@@ -80,9 +80,11 @@ body {
 }
 
 /* Stands in for the video's poster attribute so the framing can follow a media
-   query. Mobile gets the cropped still that matches the portrait encode. */
+   query. Mobile gets the cropped still that matches the portrait encode.
+   The ?v= must match MEDIA_VERSION in src/seo.js — these files are served
+   immutable under fixed names, so the version is what busts the cache. */
 .hero-poster {
-  background-image: url('/s15-poster-mobile.jpg');
+  background-image: url('/s15-poster-mobile.jpg?v=2');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -90,7 +92,7 @@ body {
 
 @media (min-width: 768px) {
   .hero-poster {
-    background-image: url('/s15-poster.jpg');
+    background-image: url('/s15-poster.jpg?v=2');
     background-position: 72% center;
   }
 }

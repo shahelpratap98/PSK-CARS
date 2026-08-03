@@ -4,11 +4,11 @@
   "trailingSlash": false,
   "headers": [
     {
-      "source": "/s15-hero.mp4",
+      "source": "/(s15-hero|s15-hero-mobile).mp4",
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
     },
     {
-      "source": "/s15-poster.jpg",
+      "source": "/(s15-poster|s15-poster-mobile).jpg",
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
     }
   ]

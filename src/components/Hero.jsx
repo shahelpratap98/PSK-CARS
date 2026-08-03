@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Star, Clock, MapPin, Phone, ChevronDown, MessageCircle } from 'lucide-react'
 import { BUSINESS, whatsappLink } from '../siteConfig'
+import { MEDIA_VERSION } from '../seo'
 
 export default function Hero() {
   return (
@@ -24,8 +25,8 @@ export default function Hero() {
         disablePictureInPicture
         aria-hidden="true"
       >
-        <source src="/s15-hero-mobile.mp4" media="(max-width: 767px)" type="video/mp4" />
-        <source src="/s15-hero.mp4" type="video/mp4" />
+        <source src={`/s15-hero-mobile.mp4?v=${MEDIA_VERSION}`} media="(max-width: 767px)" type="video/mp4" />
+        <source src={`/s15-hero.mp4?v=${MEDIA_VERSION}`} type="video/mp4" />
       </video>
 
       {/* Keeps the copy legible without flattening the video: a soft wash from

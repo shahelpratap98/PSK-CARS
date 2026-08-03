@@ -16,7 +16,19 @@ export const STREET_ADDRESS = ''
 export const POSTAL_CODE = ''
 export const PHONE = ''
 
-export const OG_IMAGE = `${SITE_URL}/s15-poster.jpg`
+/**
+ * Cache-busting token for the hero video and posters.
+ *
+ * Those files sit in public/ under fixed names, so Vite never fingerprints
+ * them, yet they are served with `immutable` for a year. Without a version in
+ * the URL, anyone who has already visited keeps the old file until the cache
+ * expires. Bump this whenever `npm run encode:video` or `npm run
+ * optimise:poster` changes an asset, and mirror it in the `.hero-poster` rule
+ * in index.css, which cannot import this value.
+ */
+export const MEDIA_VERSION = '2'
+
+export const OG_IMAGE = `${SITE_URL}/s15-poster.jpg?v=${MEDIA_VERSION}`
 
 // Root keeps its trailing slash so the canonical matches the sitemap entry.
 export const canonical = (path) => `${SITE_URL}${path === '/' ? '/' : path}`

@@ -156,6 +156,12 @@ If you replace the source video, keep it at `assets/s15-hero-source.mp4` and re-
 `npm run encode:video`. The crop rectangle in `scripts/encode-video.js` is tuned to this specific
 framing and will need adjusting for a different shot.
 
+**After regenerating any hero asset, bump `MEDIA_VERSION` in [`src/seo.js`](src/seo.js) and the
+matching `?v=` in the `.hero-poster` rule in [`src/index.css`](src/index.css).** These four files
+live in `public/` under fixed names, so Vite never fingerprints them, yet they are served with
+`Cache-Control: immutable` for a year. Without a version bump, every returning visitor keeps the old
+video and poster until that year is up.
+
 ## Notable implementation details
 
 - **Hero legibility.** The copy sits in a left column and the video's `object-position` pushes the
