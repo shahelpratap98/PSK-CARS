@@ -7,7 +7,16 @@ export default function Footer() {
     <footer className="border-t border-white/10 bg-black px-4 py-14 sm:px-6 md:px-12">
       <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-4">
         <div className="md:col-span-1">
-          <p className="text-lg font-semibold tracking-[-0.04em]">PSK CARS</p>
+          <div className="flex items-center gap-3">
+            <img
+              src="/brand/psk-logo.png"
+              alt=""
+              width={253}
+              height={237}
+              className="h-12 w-auto"
+            />
+            <p className="text-lg font-semibold tracking-[-0.04em]">PSK CARS</p>
+          </div>
           <p className="mt-3 max-w-xs text-sm text-gray-400">
             Paint work, panel beating, compliance and sandblasting from our {BUSINESS.suburb}{' '}
             workshop in {BUSINESS.region}.

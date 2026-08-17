@@ -47,10 +47,18 @@ export default function Navbar() {
       <div className="relative mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 md:px-12 md:py-6">
         <Link
           to="/"
-          className="animate-blur-fade-up flex h-8 items-center text-lg font-semibold tracking-[-0.04em] md:h-10 md:text-xl"
+          aria-label="PSK Cars home"
+          className="animate-blur-fade-up flex items-center gap-2.5"
           style={{ animationDelay: '0ms' }}
         >
-          PSK CARS
+          <img
+            src="/brand/psk-logo.png"
+            alt=""
+            width={253}
+            height={237}
+            className="h-9 w-auto md:h-11"
+          />
+          <span className="text-lg font-semibold tracking-[-0.04em] md:text-xl">PSK CARS</span>
         </Link>
 
         <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 lg:flex">

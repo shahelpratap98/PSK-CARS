@@ -135,6 +135,21 @@ If you ever move off prerendering, that rewrite has to come back or deep links w
 On Netlify the function would need moving to `netlify/functions/` and the headers expressing in
 `netlify.toml`.
 
+## Brand
+
+The palette is defined once, in the `@theme` block at the top of
+[`src/index.css`](src/index.css), which is what makes `bg-brand`, `text-brand` and `border-brand`
+work as ordinary Tailwind utilities. Change the red there and it changes everywhere.
+
+`public/brand/psk-logo.png` is generated from the supplied colour badge by `npm run build:logo`,
+which knocks out the background, converts to greyscale and inverts. The inversion matters: the gear
+ring and the banner are the *darkest* parts of the original artwork, so a straight greyscale
+conversion would make them disappear against a black page.
+
+**The logo source is a 323x311 JPEG that carries a stock watermark pattern.** The flood fill removes
+it, but the mark is still low resolution and will not scale up cleanly. Get the original vector (SVG
+or EPS) from whoever produced it and regenerate: the script will take a larger source unchanged.
+
 ## Assets
 
 The originals live in `assets/` and are never served. `public/` holds only the encoded derivatives.
