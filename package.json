@@ -9,6 +9,7 @@
     "build:client": "vite build",
     "optimise:poster": "node scripts/optimise-poster.js",
     "encode:video": "node scripts/encode-video.js",
+    "optimise:service-images": "node scripts/optimise-service-images.js",
     "preview": "vite preview"
   },
   "dependencies": {
