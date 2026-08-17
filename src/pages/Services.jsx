@@ -25,7 +25,9 @@ export default function Services() {
                 className="group grid gap-6 py-10 transition-opacity md:grid-cols-12 md:gap-10 md:py-14"
               >
                 <div className="md:col-span-1">
-                  <span className="text-xs tracking-[0.2em] text-gray-500">{service.number}</span>
+                  <span className="text-brand text-xs font-medium tracking-[0.2em]">
+                    {service.number}
+                  </span>
                 </div>
                 <div className="md:col-span-5">
                   <h2

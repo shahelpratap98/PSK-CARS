@@ -1,7 +1,25 @@
 @import 'tailwindcss';
 
+/* Brand palette. Registering these with @theme is what makes `bg-brand`,
+   `text-brand` and `border-brand` available as normal Tailwind utilities. */
+@theme {
+  --color-brand: #e01f2d;
+  --color-brand-bright: #ff2b3a;
+  --color-brand-dark: #9e0f1a;
+}
+
 html {
   scroll-behavior: smooth;
+}
+
+::selection {
+  background: var(--color-brand);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand-bright);
+  outline-offset: 3px;
 }
 
 body {

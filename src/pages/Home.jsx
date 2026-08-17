@@ -33,7 +33,7 @@ export default function Home() {
       <section id="services" className="scroll-mt-24 px-4 py-20 sm:px-6 md:px-12 md:py-28">
         <div className="mx-auto max-w-7xl">
           <Reveal className="max-w-2xl">
-            <p className="text-xs tracking-[0.2em] text-gray-500 uppercase">What we do</p>
+            <p className="text-brand text-xs font-medium tracking-[0.2em] uppercase">What we do</p>
             <h2
               className="mt-4 text-3xl font-normal sm:text-4xl md:text-5xl"
               style={{ letterSpacing: '-0.04em' }}
@@ -52,25 +52,44 @@ export default function Home() {
               <Reveal key={service.slug} delay={i * 80}>
                 <Link
                   to={`/services/${service.slug}`}
-                  className="group flex h-full flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-7 transition-colors duration-300 hover:border-white/25 hover:bg-white/[0.05] md:p-9"
+                  className="group hover:border-brand/60 flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] transition-colors duration-300 hover:bg-white/[0.05]"
                 >
-                  <div>
-                    <span className="text-xs tracking-[0.2em] text-gray-500">{service.number}</span>
-                    <h3
-                      className="mt-4 text-2xl font-normal md:text-3xl"
-                      style={{ letterSpacing: '-0.03em' }}
-                    >
-                      {service.title}
-                    </h3>
-                    <p className="mt-3 text-sm text-gray-400 md:text-base">{service.summary}</p>
-                  </div>
-                  <span className="mt-8 inline-flex items-center gap-2 text-sm text-gray-300 transition-colors group-hover:text-white">
-                    Learn more
-                    <ArrowRight
-                      size={16}
-                      className="transition-transform duration-300 group-hover:translate-x-1"
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <img
+                      src={`/services/${service.slug}.webp`}
+                      alt={service.imageAlt}
+                      width={1200}
+                      height={900}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                     />
-                  </span>
+                    {/* Fades the photo into the card body so the type below sits
+                        on solid black rather than on picture detail. */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                    <span className="text-brand absolute top-5 left-7 text-xs font-medium tracking-[0.2em]">
+                      {service.number}
+                    </span>
+                  </div>
+
+                  <div className="flex flex-1 flex-col justify-between p-7 pt-5 md:p-9 md:pt-6">
+                    <div>
+                      <h3
+                        className="text-2xl font-normal md:text-3xl"
+                        style={{ letterSpacing: '-0.03em' }}
+                      >
+                        {service.title}
+                      </h3>
+                      <p className="mt-3 text-sm text-gray-400 md:text-base">{service.summary}</p>
+                    </div>
+                    <span className="group-hover:text-brand mt-8 inline-flex items-center gap-2 text-sm text-gray-300 transition-colors">
+                      Learn more
+                      <ArrowRight
+                        size={16}
+                        className="transition-transform duration-300 group-hover:translate-x-1"
+                      />
+                    </span>
+                  </div>
                 </Link>
               </Reveal>
             ))}
@@ -81,7 +100,7 @@ export default function Home() {
       <section className="border-t border-white/10 px-4 py-20 sm:px-6 md:px-12 md:py-28">
         <div className="mx-auto max-w-7xl">
           <Reveal className="max-w-2xl">
-            <p className="text-xs tracking-[0.2em] text-gray-500 uppercase">Why PSK</p>
+            <p className="text-brand text-xs font-medium tracking-[0.2em] uppercase">Why PSK</p>
             <h2
               className="mt-4 text-3xl font-normal sm:text-4xl md:text-5xl"
               style={{ letterSpacing: '-0.04em' }}

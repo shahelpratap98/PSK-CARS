@@ -33,6 +33,7 @@ export const SERVICES = [
     slug: 'paint-work',
     number: '01',
     title: 'Paint Work',
+    imageAlt: 'A spray gun laying glossy red paint across a car panel in a paint booth',
     tagline: 'Colour-matched refinishing that disappears into the panel next to it.',
     summary:
       'Single-panel touch-ups through to full resprays, sprayed in a controlled booth and blended so the repair is invisible.',
@@ -71,9 +72,10 @@ export const SERVICES = [
     slug: 'panel-beating',
     number: '02',
     title: 'Panel Beating',
+    imageAlt: 'A hammer and dolly reshaping a dented steel car fender in a workshop',
     tagline: 'Damaged bodywork brought back to the lines it left the factory with.',
     summary:
-      'Dents, collision damage and structural repair — reshaped and realigned so panel gaps and body lines read straight again.',
+      'Dents, collision damage and structural repair, reshaped and realigned so panel gaps and body lines read straight again.',
     intro:
       'Good panel work is judged by what you cannot see. Body lines should run straight down the length of the car, gaps should stay even from top to bottom, and doors should shut with the same weight they always did. Getting there means reshaping metal properly rather than burying the problem in filler.',
     points: [
@@ -109,6 +111,7 @@ export const SERVICES = [
     slug: 'compliance',
     number: '03',
     title: 'Compliance',
+    imageAlt: 'A car raised on a two-post hoist with an inspection lamp on the underbody',
     tagline: 'Entry and repair certification handled end to end.',
     summary:
       'Imported and repaired vehicles taken through certification, with the repair work and the paperwork managed by the same team.',
@@ -147,6 +150,7 @@ export const SERVICES = [
     slug: 'sandblasting',
     number: '04',
     title: 'Sandblasting',
+    imageAlt: 'A blast nozzle stripping old coating from a panel back to bare metal',
     tagline: 'Rust, paint and old coatings stripped back to clean, sound metal.',
     summary:
       'Chassis, panels, wheels and parts blasted back to bare metal so whatever goes on next has something solid to bond to.',

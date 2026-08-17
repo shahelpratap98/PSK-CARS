@@ -85,7 +85,7 @@ export default function Navbar() {
 
           <Link
             to="/contact"
-            className="animate-blur-fade-up hidden rounded-full bg-white px-5 py-2 text-sm font-medium text-black transition-colors hover:bg-gray-200 sm:block"
+            className="animate-blur-fade-up hidden bg-brand hover:bg-brand-bright rounded-full px-5 py-2 text-sm font-medium text-white transition-colors sm:block"
             style={{ animationDelay: '400ms' }}
           >
             Get a quote
@@ -150,7 +150,7 @@ export default function Navbar() {
           </a>
           <Link
             to="/contact"
-            className="flex-1 rounded-full bg-white px-4 py-2 text-center text-sm font-medium text-black"
+            className="bg-brand flex-1 rounded-full px-4 py-2 text-center text-sm font-medium text-white"
           >
             Get a quote
           </Link>

@@ -45,7 +45,7 @@ export default function Hero() {
             style={{ animationDelay: '300ms' }}
           >
             <span className="flex items-center gap-2">
-              <Star size={16} className="fill-white sm:h-5 sm:w-5" />
+              <Star size={16} className="fill-brand text-brand sm:h-5 sm:w-5" />
               <span className="font-medium">Trusted {BUSINESS.region} workshop</span>
             </span>
             <span className="flex items-center gap-2">
@@ -80,11 +80,11 @@ export default function Hero() {
           <div className="flex flex-wrap gap-3 sm:gap-4">
             <Link
               to="/contact"
-              className="animate-blur-fade-up flex items-center gap-2 rounded-full bg-white px-6 py-2.5 font-medium text-black transition-colors hover:bg-gray-200 sm:px-8 sm:py-3"
+              className="bg-brand hover:bg-brand-bright animate-blur-fade-up flex items-center gap-2 rounded-full px-6 py-2.5 font-medium text-white transition-colors sm:px-8 sm:py-3"
               style={{ animationDelay: '600ms' }}
             >
               <span>Get a quote</span>
-              <Phone size={18} className="fill-black" />
+              <Phone size={18} className="fill-white" />
             </Link>
             <a
               href={whatsappLink()}

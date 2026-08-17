@@ -20,10 +20,10 @@ export default function CallToAction({
         <div className="mt-9 flex flex-wrap justify-center gap-3 sm:gap-4">
           <Link
             to="/contact"
-            className="flex items-center gap-2 rounded-full bg-white px-6 py-2.5 font-medium text-black transition-colors hover:bg-gray-200 sm:px-8 sm:py-3"
+            className="bg-brand hover:bg-brand-bright flex items-center gap-2 rounded-full px-6 py-2.5 font-medium text-white transition-colors sm:px-8 sm:py-3"
           >
             <span>Get a quote</span>
-            <Phone size={18} className="fill-black" />
+            <Phone size={18} className="fill-white" />
           </Link>
           <a
             href={whatsappLink()}
